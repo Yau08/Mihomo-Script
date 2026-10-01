@@ -22,5 +22,5 @@
    - **安全兜底**：未命中的流量统一兜底至识别出的主代理策略组。
 
 ## 如何使用?
-复制下列链接，在软件中选择从URL导入即可
-https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script.txt
+[复制下列链接，在软件中选择从URL导入即可]
+(https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script.txt)
