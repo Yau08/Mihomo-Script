@@ -20,3 +20,7 @@
    - **国内服务优化**：苹果国内域名、GEOIP CN 中国大陆 IP 自动直连。
    - **国外常用服务覆盖**：针对 Google、YouTube、Telegram、GitHub、Steam、OpenAI/ChatGPT、X (Twitter)、Microsoft 等服务精准走代理。
    - **安全兜底**：未命中的流量统一兜底至识别出的主代理策略组。
+
+## 如何使用?
+复制下列链接，在软件中选择从URL导入即可
+https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script.txt
