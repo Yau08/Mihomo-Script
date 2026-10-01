@@ -33,3 +33,7 @@
 ## 如何使用?
 [复制下列链接，在软件中选择从URL导入即可]
 (https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script.txt)
+
+## 📄 开源许可
+
+本项目遵循 [AGPL-3.0](LICENSE) 协议开源。
