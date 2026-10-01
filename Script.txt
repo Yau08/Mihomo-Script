@@ -1,6 +1,7 @@
 /**
- * 复写脚本
- */
+https://github.com/Yau08/Mihomo-Script
+Open Source Protocol: AGPL v3.0
+*/
 function main(params) {
   if (!params) return {};
 
@@ -55,20 +56,21 @@ function main(params) {
       // 1. 局域网与路由器管理域名
       "*.lan",
       "*.local",
+      "*.localhost",
       "*.home.arpa",
       "*.internal",
-      "tplogin.cn",            // TP-Link
-      "melogin.cn",            // 水星
-      "falogin.cn",            // 迅捷
+      
+      "tplogin.cn",// TP-Link
+      "melogin.cn",// 水星
+      "falogin.cn",// 迅捷
       "miwifi.com",   
-      "mi.wifi",         // 小米/红米路由器
-      "router.asus.com",       // 华硕
-      "router.ctc",            // 电信光猫
+      "mi.wifi",// 小米/红米
+      "router.asus.com",// 华硕
+      "router.ctc",// 电信光猫
 
-      // 2. 本地授权与快捷登录（核心）
-      "localhost.ptlogin2.qq.com", // 腾讯网页端快捷一键登录
-      "*.localhost",
-
+      // 2. 快捷登录
+ "localhost.ptlogin2.qq.com",// 腾讯网页端快捷一键登录
+      
       // 3. 时间同步 (NTP)
       "time.*.com",
       "time.*.gov",
