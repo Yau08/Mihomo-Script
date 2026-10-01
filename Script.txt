@@ -112,6 +112,7 @@ function main(params) {
     `DOMAIN-SUFFIX,s.team,${mainGroup}`,
     `DOMAIN-KEYWORD,steam,${mainGroup}`,
     `DOMAIN-SUFFIX,github.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,githubusercontent.com,${mainGroup}`,
     `DOMAIN-SUFFIX,t.me,${mainGroup}`,
     `DOMAIN-KEYWORD,telegram,${mainGroup}`,
     `DOMAIN-KEYWORD,openai,${mainGroup}`,
