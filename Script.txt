@@ -42,28 +42,73 @@ function main(params) {
     proxies: rawProxies
   };
 
-  // 4. 覆盖为你要求的 Fake-IP DNS
+    // 4. 覆盖为你要求的 Fake-IP DNS（优化整合版）
   config.dns = {
     enable: true,
     listen: "0.0.0.0:10053",
     ipv6: true,
     "enhanced-mode": "fake-ip",
     "fake-ip-range": "198.18.0.1/16",
-    "fake-ip-filter": [
+    "use-hosts": true,
+    "respect-rules": true, // 核心：直连域名遵循直连规则，不乱发 Fake-IP
+        "fake-ip-filter": [
+      // 1. 局域网与路由器管理域名
       "*.lan",
       "*.local",
-      "time.ncl.edu.tw",
+      "*.home.arpa",
+      "*.internal",
+      "tplogin.cn",            // TP-Link
+      "melogin.cn",            // 水星
+      "falogin.cn",            // 迅捷
+      "miwifi.com",   
+      "mi.wifi",         // 小米/红米路由器
+      "router.asus.com",       // 华硕
+      "router.ctc",            // 电信光猫
+
+      // 2. 本地授权与快捷登录（核心）
+      "localhost.ptlogin2.qq.com", // 腾讯网页端快捷一键登录
+      "*.localhost",
+
+      // 3. 时间同步 (NTP)
+      "time.*.com",
+      "time.*.gov",
+      "time.*.edu.cn",
+      "time.*.apple.com",
       "time.nist.gov",
       "time.apple.com",
-      "time.windows.com"
+      "time.windows.com",
+      "pool.ntp.org",
+      "time.ncl.edu.tw",
+
+      // 4. Windows 网络连通性测试 (NCSI)
+      "*.msftconnecttest.com",
+      "*.msftncsi.com",
+
+      // 5. 游戏联机/P2P打洞 (STUN)
+      "*.xboxlive.com",
+      "*.battlenet.com.cn",
+      "*.pvp.net",
+      "*.moba.qq.com",
+      "*.stun.*.*",
+      "*.stun.*.*.*",
+
+      // 6. 办公打卡/NAS 远程
+      "*.dingtalk.com",
+      "*.work.weixin.qq.com",
+      "*.synology.com",
+      "*.myqnapcloud.com"
     ],
-    "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-    nameserver: ["223.5.5.5", "119.29.29.29"],
-    fallback: ["8.8.8.8", "1.1.1.1"],
+
+    "default-nameserver": ["223.5.5.5", "119.29.29.29", "114.114.114.114"],
+    "proxy-server-nameserver": ["1.1.1.1","223.5.5.5", "119.29.29.29"], // 专门解析机场节点域名
+    nameserver: ["223.5.5.5", "119.29.29.29", "114.114.114.114"],
+    fallback: ["1.1.1.1", "8.8.8.8"],
     "fallback-filter": {
       geoip: true,
       "geoip-code": "CN",
-      ipCIDR: ["240.0.0.0/4"]
+      geosite: ["gfw"],
+      ipcidr: ["240.0.0.0/4"],
+      domain: ["+.google.com", "+.facebook.com", "+.youtube.com"]
     }
   };
 
@@ -119,6 +164,12 @@ function main(params) {
 
     // 国内 IP 直连
     "GEOIP,CN,DIRECT,no-resolve",
+    "GEOSITE,CN,DIRECT,no-resolve",
+    "DOMAIN-SUFFIX,*.cn,DIRECT,no-resolve",
+    "DOMAIN-KEYWORD,cn,DIRECT,no-resolve",
+    "DOMAIN-KEYWORD,qq,DIRECT,no-resolve",
+    "DOMAIN-KEYWORD,tencent,DIRECT,no-resolve",
+    "DOMAIN-KEYWORD,ali,DIRECT,no-resolve",
 
     // 兜底规则
     `MATCH,${mainGroup}`
