@@ -1,0 +1,127 @@
+/**
+ * 复写脚本
+ */
+function main(params) {
+  if (!params) return {};
+
+  // 1. 安全获取节点列表
+  const rawProxies = Array.isArray(params.proxies) ? params.proxies : [];
+  const proxyNames = rawProxies.map(p => p.name).filter(Boolean);
+
+  // 2. 自动找到一个可用的代理组名称
+  let mainGroup = "Proxy";
+
+  // 检查原配置里的策略组
+  if (Array.isArray(params["proxy-groups"]) && params["proxy-groups"].length > 0) {
+    const groups = params["proxy-groups"];
+
+    // 优先寻找常见的代理出口策略组
+    const preferredTypes = ["select", "url-test", "fallback", "load-balance"];
+
+    for (const group of groups) {
+      if (
+        group &&
+        group.name &&
+        preferredTypes.includes(group.type)
+      ) {
+        mainGroup = group.name;
+        break;
+      }
+    }
+
+    // 如果没有找到合适的策略组，则使用第一个策略组
+    if (mainGroup === "Proxy" && groups[0] && groups[0].name) {
+      mainGroup = groups[0].name;
+    }
+  }
+
+  // 3. 构造配置对象
+  // 保留机场原有的所有策略组，不进行任何修改
+  const config = {
+    ...params,
+    proxies: rawProxies
+  };
+
+  // 4. 覆盖为你要求的 Fake-IP DNS
+  config.dns = {
+    enable: true,
+    listen: "0.0.0.0:10053",
+    ipv6: true,
+    "enhanced-mode": "fake-ip",
+    "fake-ip-range": "198.18.0.1/16",
+    "fake-ip-filter": [
+      "*.lan",
+      "*.local",
+      "time.ncl.edu.tw",
+      "time.nist.gov",
+      "time.apple.com",
+      "time.windows.com"
+    ],
+    "default-nameserver": ["223.5.5.5", "119.29.29.29"],
+    nameserver: ["223.5.5.5", "119.29.29.29"],
+    fallback: ["8.8.8.8", "1.1.1.1"],
+    "fallback-filter": {
+      geoip: true,
+      "geoip-code": "CN",
+      ipCIDR: ["240.0.0.0/4"]
+    }
+  };
+
+  // 5. 将规则目标指向自动识别的策略组 mainGroup
+  config.rules = [
+    // 局域网与时间同步直连
+    "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve",
+    "IP-CIDR,172.16.0.0/12,DIRECT,no-resolve",
+    "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
+    "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve",
+    "DST-PORT,123,DIRECT",
+
+    // 广告拦截
+    "DOMAIN-SUFFIX,admob.com,REJECT",
+    "DOMAIN-KEYWORD,advertisement,REJECT",
+
+    // 苹果国内直连
+    "DOMAIN-SUFFIX,apple.com.cn,DIRECT",
+    "DOMAIN-KEYWORD,cn.apple.com,DIRECT",
+
+    // Google 国内代理
+    `DOMAIN-SUFFIX,g.cn,${mainGroup}`,
+    `DOMAIN-SUFFIX,google.cn,${mainGroup}`,
+
+    // Google Play & 国外服务代理    
+    `DOMAIN-SUFFIX,google.com,${mainGroup}`,
+        `DOMAIN-SUFFIX,youtu.be,${mainGroup}`,
+    `DOMAIN-KEYWORD,googleplay,${mainGroup}`,
+    `DOMAIN-KEYWORD,googleapis,${mainGroup}`,
+    `DOMAIN-KEYWORD,google,${mainGroup}`,
+    `DOMAIN-KEYWORD,gmail,${mainGroup}`,
+    `DOMAIN-KEYWORD,youtube,${mainGroup}`,
+    `DOMAIN-KEYWORD,googlevideo,${mainGroup}`,
+
+    // 苹果海外服务走代理
+        `DOMAIN-SUFFIX,apple.com,${mainGroup}`,
+    `DOMAIN-KEYWORD,apple,${mainGroup}`,
+    `DOMAIN-KEYWORD,icloud,${mainGroup}`,
+    `DOMAIN-KEYWORD,itunes,${mainGroup}`,
+
+    // 常用海外服务
+    `DOMAIN-SUFFIX,microsoft.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,live.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,x.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,steampowered.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,s.team,${mainGroup}`,
+    `DOMAIN-KEYWORD,steam,${mainGroup}`,
+    `DOMAIN-SUFFIX,github.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,t.me,${mainGroup}`,
+    `DOMAIN-KEYWORD,telegram,${mainGroup}`,
+    `DOMAIN-KEYWORD,openai,${mainGroup}`,
+
+    // 国内 IP 直连
+    "GEOIP,CN,DIRECT,no-resolve",
+
+    // 兜底规则
+    `MATCH,${mainGroup}`
+  ];
+
+  return config;
+}
