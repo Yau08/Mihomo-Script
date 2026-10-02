@@ -52,54 +52,68 @@ function main(params) {
     "fake-ip-range": "198.18.0.1/16",
     "use-hosts": true,
     "respect-rules": true, // 核心：直连域名遵循直连规则，不乱发 Fake-IP
-        "fake-ip-filter": [
-      // 1. 局域网与路由器管理域名
-      "*.lan",
-      "*.local",
-      "*.localhost",
-      "*.home.arpa",
-      "*.internal",
-      
-      "tplogin.cn",// TP-Link
-      "melogin.cn",// 水星
-      "falogin.cn",// 迅捷
-      "miwifi.com",   
-      "mi.wifi",// 小米/红米
-      "router.asus.com",// 华硕
-      "router.ctc",// 电信光猫
+  "fake-ip-filter": [
+  // 1. 本地网络与局域网域名
+  "*.lan",
+  "*.local",
+  "*.localhost",
+  "*.home.arpa",
+  "*.internal",
 
-      // 2. 快捷登录
- "localhost.ptlogin2.qq.com",// 腾讯网页端快捷一键登录
-      
-      // 3. 时间同步 (NTP)
-      "time.*.com",
-      "time.*.gov",
-      "time.*.edu.cn",
-      "time.*.apple.com",
-      "time.nist.gov",
-      "time.apple.com",
-      "time.windows.com",
-      "pool.ntp.org",
-      "time.ncl.edu.tw",
+  // 2. 路由器与网络设备管理
+  "tplogin.cn",
+  "melogin.cn",
+  "falogin.cn",
+  "miwifi.com",
+  "mi.wifi",
+  "router.asus.com",
+  "router.ctc",
 
-      // 4. Windows 网络连通性测试 (NCSI)
-      "*.msftconnecttest.com",
-      "*.msftncsi.com",
+  // 3. 本地快捷登录与办公协作验证
+  "localhost.ptlogin2.qq.com",
+  "localhost.sec.qq.com",
+  "localhost.work.weixin.qq.com",
+  "*.dingtalk.com",
+  "*.work.weixin.qq.com",
 
-      // 5. 游戏联机/P2P打洞 (STUN)
-      "*.xboxlive.com",
-      "*.battlenet.com.cn",
-      "*.pvp.net",
-      "*.moba.qq.com",
-      "*.stun.*.*",
-      "*.stun.*.*.*",
+  // 4. 时间同步 (NTP)
+  "time.windows.com",
+  "time.apple.com",
+  "time.nist.gov",
+  "time.ncl.edu.tw",
+  "pool.ntp.org",
+  "*.ntp.org",
+  "time.*.com",
+  "time.*.gov",
+  "time.*.edu.cn",
+  "time.*.apple.com",
 
-      // 6. 办公打卡/NAS 远程
-      "*.dingtalk.com",
-      "*.work.weixin.qq.com",
-      "*.synology.com",
-      "*.myqnapcloud.com"
-    ],
+  // 5. 操作系统网络连通性测试 (NCSI / 强制门户探测)
+  "*.msftconnecttest.com",
+  "*.msftncsi.com",
+  "dns.msftncsi.com",
+  "captive.apple.com",
+
+  // 6. STUN / P2P 打洞与游戏联机
+  "stun.l.google.com",
+  "*.xboxlive.com",
+  "*.battlenet.com.cn",
+  "*.blizzard.cn",
+  "*.pvp.net",
+  "*.moba.qq.com",
+  "*.stun.*.*",
+  "*.stun.*.*.*",
+  "*.stun.*.*.*.*",
+
+  // 7. NAS 远程访问
+  "*.synology.com",
+  "*.myqnapcloud.com",
+
+  // 8. mDNS / DNS-SD 本地服务发现
+  "_tcp.*",
+  "_udp.*",
+  "_services._dns-sd._udp.*"
+  ],
 
     "default-nameserver": ["223.5.5.5", "119.29.29.29", "114.114.114.114"],
     "proxy-server-nameserver": ["1.1.1.1","223.5.5.5", "119.29.29.29"], // 专门解析机场节点域名
@@ -109,7 +123,17 @@ function main(params) {
       geoip: true,
       "geoip-code": "CN",
       geosite: ["gfw"],
-      ipcidr: ["240.0.0.0/4"],
+      ipcidr: [
+    "0.0.0.0/8",
+    "10.0.0.0/8",
+    "100.64.0.0/10",
+    "127.0.0.0/8",
+    "169.254.0.0/16",
+    "172.16.0.0/12",
+    "192.168.0.0/16",
+    "198.18.0.0/15",
+    "224.0.0.0/4",
+    "240.0.0.0/4"],
       domain: ["+.google.com", "+.facebook.com", "+.youtube.com"]
     }
   };
