@@ -129,7 +129,7 @@ function main(params) {
     "fallback-filter": {
       geoip: true,
       "geoip-code": "CN",
-      geosite: ["gfw"],
+      geosite: ["gfw","greatfire"],
       ipcidr: [
     "0.0.0.0/8",
     "10.0.0.0/8",
@@ -141,7 +141,7 @@ function main(params) {
     "198.18.0.0/15",
     "224.0.0.0/4",
     "240.0.0.0/4"],
-      domain: ["+.google.com", "+.facebook.com", "+.youtube.com"]
+      domain: []
     }
   };
 
