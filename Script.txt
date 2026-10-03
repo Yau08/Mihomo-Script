@@ -75,6 +75,12 @@ function main(params) {
   "localhost.work.weixin.qq.com",
   "*.dingtalk.com",
   "*.work.weixin.qq.com",
+  "*.cmccsign.com",
+  "*.139.com",
+  "*.10086.cn",
+  "*.111.com",
+  "*.88.com",
+  "*.mail.cn",
 
   // 4. 时间同步 (NTP)
   "time.windows.com",
