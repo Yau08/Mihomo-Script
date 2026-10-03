@@ -147,11 +147,86 @@ function main(params) {
   // 5. 将规则目标指向自动识别的策略组 mainGroup
   config.rules = [
     // 局域网与时间同步直连
+        "IP-CIDR,0.0.0.0/8,DIRECT,no-resolve",
     "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve",
+    "IP-CIDR,100.64.0.0/10,DIRECT,no-resolve",
+    "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve",
+    "IP-CIDR,169.254.0.0/16,DIRECT,no-resolve",
     "IP-CIDR,172.16.0.0/12,DIRECT,no-resolve",
     "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
-    "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve",
+    "IP-CIDR,198.18.0.0/15,DIRECT,no-resolve",
+    "IP-CIDR,224.0.0.0/4,DIRECT,no-resolve",
+    "IP-CIDR,240.0.0.0/4,DIRECT,no-resolve",
     "DST-PORT,123,DIRECT",
+    
+    //--------------------
+    // 1. 本地网络与局域网域名
+    "DOMAIN-SUFFIX,lan,DIRECT",
+    "DOMAIN-SUFFIX,local,DIRECT",
+    "DOMAIN-SUFFIX,localhost,DIRECT",
+    "DOMAIN-SUFFIX,home.arpa,DIRECT",
+    "DOMAIN-SUFFIX,internal,DIRECT",
+
+    // 2. 路由器与网络设备管理
+    "DOMAIN,tplogin.cn,DIRECT",
+    "DOMAIN,melogin.cn,DIRECT",
+    "DOMAIN,falogin.cn,DIRECT",
+    "DOMAIN,miwifi.com,DIRECT",
+    "DOMAIN,mi.wifi,DIRECT",
+    "DOMAIN,router.asus.com,DIRECT",
+    "DOMAIN,router.ctc,DIRECT",
+
+    // 3. 本地快捷登录与办公协作验证
+    "DOMAIN,localhost.ptlogin2.qq.com,DIRECT",
+    "DOMAIN,localhost.sec.qq.com,DIRECT",
+    "DOMAIN,localhost.work.weixin.qq.com,DIRECT",
+    "DOMAIN-SUFFIX,dingtalk.com,DIRECT",
+    "DOMAIN-SUFFIX,work.weixin.qq.com,DIRECT",
+    "DOMAIN-SUFFIX,cmccsign.com,DIRECT",
+    "DOMAIN-SUFFIX,139.com,DIRECT",
+    "DOMAIN-SUFFIX,10086.cn,DIRECT",
+    "DOMAIN-SUFFIX,111.com,DIRECT",
+    "DOMAIN-SUFFIX,88.com,DIRECT",
+    "DOMAIN-SUFFIX,mail.cn,DIRECT",
+
+    // 4. 时间同步 (NTP)
+    "DOMAIN,time.windows.com,DIRECT",
+    "DOMAIN,time.apple.com,DIRECT",
+    "DOMAIN,time.nist.gov,DIRECT",
+    "DOMAIN,time.ncl.edu.tw,DIRECT",
+    "DOMAIN,pool.ntp.org,DIRECT",
+    "DOMAIN-SUFFIX,ntp.org,DIRECT",
+    "DOMAIN-KEYWORD,time.,DIRECT",
+    "DOMAIN-KEYWORD,time.,DIRECT",
+    "DOMAIN-KEYWORD,time.,DIRECT",
+    "DOMAIN-KEYWORD,time.,DIRECT",
+
+    // 5. 操作系统网络连通性测试 (NCSI / 强制门户探测)
+    "DOMAIN-SUFFIX,msftconnecttest.com,DIRECT",
+    "DOMAIN-SUFFIX,msftncsi.com,DIRECT",
+    "DOMAIN,dns.msftncsi.com,DIRECT",
+    "DOMAIN,captive.apple.com,DIRECT",
+
+    // 6. STUN / P2P 打洞与游戏联机
+    "DOMAIN,stun.l.google.com,DIRECT",
+    "DOMAIN-SUFFIX,xboxlive.com,DIRECT",
+    "DOMAIN-SUFFIX,battlenet.com.cn,DIRECT",
+    "DOMAIN-SUFFIX,blizzard.cn,DIRECT",
+    "DOMAIN-SUFFIX,pvp.net,DIRECT",
+    "DOMAIN-SUFFIX,moba.qq.com,DIRECT",
+    "DOMAIN-KEYWORD,stun,DIRECT",
+    "DOMAIN-KEYWORD,stun,DIRECT",
+    "DOMAIN-KEYWORD,stun,DIRECT",
+
+    // 7. NAS 远程访问
+    "DOMAIN-SUFFIX,synology.com,DIRECT",
+    "DOMAIN-SUFFIX,myqnapcloud.com,DIRECT",
+
+    // 8. mDNS / DNS-SD 本地服务发现
+    "DOMAIN-KEYWORD,_tcp,DIRECT",
+    "DOMAIN-KEYWORD,_udp,DIRECT",
+    "DOMAIN-KEYWORD,_services._dns-sd._udp,DIRECT"
+    //--------------------
 
     // 广告拦截
     "DOMAIN-SUFFIX,admob.com,REJECT",
