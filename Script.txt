@@ -270,13 +270,15 @@ function main(params) {
     `DOMAIN-KEYWORD,openai,${mainGroup}`,
 
     // 国内 IP 直连
-    "GEOIP,CN,DIRECT,no-resolve",
-    "GEOSITE,CN,DIRECT,no-resolve",
-    "DOMAIN-SUFFIX,*.cn,DIRECT,no-resolve",
-    "DOMAIN-KEYWORD,cn,DIRECT,no-resolve",
-    "DOMAIN-KEYWORD,qq,DIRECT,no-resolve",
-    "DOMAIN-KEYWORD,tencent,DIRECT,no-resolve",
-    "DOMAIN-KEYWORD,ali,DIRECT,no-resolve",
+    "GEOIP,CN,DIRECT",
+    "GEOSITE,CN,DIRECT",
+    "DOMAIN-SUFFIX,*.cn,DIRECT",
+    "DOMAIN-KEYWORD,cn,DIRECT",
+    "DOMAIN-KEYWORD,qq,DIRECT",
+    "DOMAIN-KEYWORD,tencent,DIRECT",
+    "DOMAIN-KEYWORD,ali,DIRECT",
+    "DOMAIN-SUFFIX,7723.com,DIRECT",
+    "DOMAIN-SUFFIX,4399.com,DIRECT",
 
     // 兜底规则
     `MATCH,${mainGroup}`
