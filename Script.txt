@@ -231,7 +231,17 @@ function main(params) {
 
     // 广告拦截
     "DOMAIN-SUFFIX,admob.com,REJECT",
-    "DOMAIN-KEYWORD,advertisement,REJECT",
+    "GEOSITE,category-ads-all,REJECT",
+    "DOMAIN-SUFFIX,doubleclick.net,REJECT",
+    "DOMAIN-SUFFIX,googlesyndication.com,REJECT",
+    "DOMAIN-SUFFIX,e.qq.com,REJECT",
+    "DOMAIN-SUFFIX,gdt.qq.com,REJECT",
+    "DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT",
+    "DOMAIN-SUFFIX,alimama.com,REJECT",
+    "DOMAIN-SUFFIX,umeng.com,REJECT",
+    "DOMAIN-SUFFIX,cnzz.com,REJECT",
+    "DOMAIN-SUFFIX,union.baidu.com,REJECT",
+    "DOMAIN-SUFFIX,e.kuaishou.com,REJECT",
 
     // 苹果国内直连
     "DOMAIN-SUFFIX,apple.com.cn,DIRECT",
