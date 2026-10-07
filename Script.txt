@@ -124,8 +124,21 @@ function main(params) {
 
     "default-nameserver": ["119.29.29.29","223.5.5.5"],
     "proxy-server-nameserver": ["https://doh.pub/dns-query","https://doh.baidu.com/dns-query"], // 专门解析机场节点域名
-    nameserver: ["119.29.29.29","223.5.5.5"],
-    fallback: ["1.1.1.1", "8.8.8.8"],
+    "nameserver": [
+      "https://dns.google/dns-query",
+      "https://cloudflare-dns.com/dns-query"
+  ],
+      "nameserver-policy": {
+      "geosite:cn": [
+      "119.29.29.29",
+      "223.5.5.5"
+    ],
+      "*.cn": [
+      "119.29.29.29",
+      "223.5.5.5"
+    ]
+  },
+    fallback: ["8.8.8.8","1.1.1.1"],
     "fallback-filter": {
       geoip: true,
       "geoip-code": "CN",
