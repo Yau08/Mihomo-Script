@@ -292,6 +292,10 @@ function main(params) {
     `DOMAIN-SUFFIX,t.me,${mainGroup}`,
     `DOMAIN-KEYWORD,telegram,${mainGroup}`,
     `DOMAIN-KEYWORD,openai,${mainGroup}`,
+    `DOMAIN-SUFFIX,moonshot.cn,${mainGroup}`,
+    `DOMAIN-SUFFIX,kimi.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,kimi.ai,${mainGroup}`,
+    `DOMAIN-SUFFIX,moonshot.ai,${mainGroup}`,
 
     // 国内 IP 直连
     "GEOIP,CN,DIRECT",
