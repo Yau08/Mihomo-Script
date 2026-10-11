@@ -296,6 +296,12 @@ function main(params) {
     `DOMAIN-SUFFIX,kimi.com,${mainGroup}`,
     `DOMAIN-SUFFIX,kimi.ai,${mainGroup}`,
     `DOMAIN-SUFFIX,moonshot.ai,${mainGroup}`,
+    `DOMAIN-SUFFIX,qwen.ai,${mainGroup}`,
+    `DOMAIN-SUFFIX,chat.qwen.ai,${mainGroup}`,
+    `DOMAIN-SUFFIX,dashscope.ai,${mainGroup}`,
+    `DOMAIN-SUFFIX,tongyi.aliyun.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,qianwen.com,${mainGroup}`,
+    `DOMAIN-SUFFIX,qianwenai.com,${mainGroup}`,
 
     // 国内 IP 直连
     "GEOIP,CN,DIRECT",
