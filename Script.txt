@@ -1,4 +1,4 @@
-/**
+/*
 Repository Link: https://github.com/Yau08/Mihomo-Script
 Subscription Link: https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script.txt
 Open Source Protocol: AGPL v3.0
@@ -287,11 +287,17 @@ function main(params) {
     `DOMAIN-SUFFIX,steampowered.com,${mainGroup}`,
     `DOMAIN-SUFFIX,s.team,${mainGroup}`,
     `DOMAIN-KEYWORD,steam,${mainGroup}`,
+/*    
+    `DOMAIN-SUFFIX,steampowered.com,direct`,
+    `DOMAIN-SUFFIX,s.team,direct`,
+    `DOMAIN-KEYWORD,steam,direct`,
+*/
     `DOMAIN-SUFFIX,github.com,${mainGroup}`,
     `DOMAIN-SUFFIX,githubusercontent.com,${mainGroup}`,
     `DOMAIN-SUFFIX,t.me,${mainGroup}`,
     `DOMAIN-KEYWORD,telegram,${mainGroup}`,
     `DOMAIN-KEYWORD,openai,${mainGroup}`,
+/*
     `DOMAIN-SUFFIX,moonshot.cn,${mainGroup}`,
     `DOMAIN-SUFFIX,kimi.com,${mainGroup}`,
     `DOMAIN-SUFFIX,kimi.ai,${mainGroup}`,
@@ -302,6 +308,7 @@ function main(params) {
     `DOMAIN-SUFFIX,tongyi.aliyun.com,${mainGroup}`,
     `DOMAIN-SUFFIX,qianwen.com,${mainGroup}`,
     `DOMAIN-SUFFIX,qianwenai.com,${mainGroup}`,
+*/
 
     // 国内 IP 直连
     "GEOIP,CN,DIRECT",
