@@ -309,6 +309,8 @@ function main(params) {
     `DOMAIN-SUFFIX,qianwen.com,${mainGroup}`,
     `DOMAIN-SUFFIX,qianwenai.com,${mainGroup}`,
 */
+    "DOMAIN-KEYWORD,gaijin,DIRECT",
+    "DOMAIN-SUFFIX,gaijin.net,DIRECT",
 
     // 国内 IP 直连
     "GEOIP,CN,DIRECT",
