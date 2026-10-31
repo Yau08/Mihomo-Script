@@ -123,6 +123,13 @@ function main(params) {
         proxies: sgNodes.length > 0 ? sgNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
+      },
+      {
+        name: "US",
+        type: "url-test",
+        proxies: sgNodes.length > 0 ? sgNodes : ["Script Elite"],
+        url: "http://www.gstatic.com/generate_204",
+        interval: 300
       }
       // ====================================================================================
     ]
