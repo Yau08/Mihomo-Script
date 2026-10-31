@@ -73,7 +73,7 @@ function main(params) {
         name: "🇹🇼 ROC",
         type: "fallback",
         strategy: "consistent-hashing",
-        proxies: twNodes.length > 0 ? twNodes : ["Script Elite"],
+        proxies: twNodes.length > 0 ? twNodes : ["🏴‍☠️ Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 900
       },
@@ -81,7 +81,7 @@ function main(params) {
         name: "🇭🇰 HKG",
         type: "fallback",
         strategy: "consistent-hashing",
-        proxies: hkNodes.length > 0 ? hkNodes : ["Script Elite"],
+        proxies: hkNodes.length > 0 ? hkNodes : ["🏴‍☠️ Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 900
       },
@@ -89,7 +89,7 @@ function main(params) {
         name: "🇯🇵 JPN",
         type: "fallback",
         strategy: "consistent-hashing",
-        proxies: jpNodes.length > 0 ? jpNodes : ["Script Elite"],
+        proxies: jpNodes.length > 0 ? jpNodes : ["🏴‍☠️ Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 900
       },
@@ -97,7 +97,7 @@ function main(params) {
         name: "🇰🇷 KOR",
         type: "fallback",
         strategy: "consistent-hashing",
-        proxies: krNodes.length > 0 ? krNodes : ["Script Elite"],
+        proxies: krNodes.length > 0 ? krNodes : ["🏴‍☠️ Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 900
       },
@@ -105,7 +105,7 @@ function main(params) {
         name: "🇸🇬 SGP",
         type: "fallback",
         strategy: "consistent-hashing",
-        proxies: sgNodes.length > 0 ? sgNodes : ["Script Elite"],
+        proxies: sgNodes.length > 0 ? sgNodes : ["🏴‍☠️ Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 900
       },
@@ -113,7 +113,7 @@ function main(params) {
         name: "🇺🇸 USA",
         type: "fallback",
         strategy: "consistent-hashing",
-        proxies: usNodes.length > 0 ? usNodes : ["Script Elite"],
+        proxies: usNodes.length > 0 ? usNodes : ["🏴‍☠️ Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 900
       }
