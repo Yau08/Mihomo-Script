@@ -1,5 +1,5 @@
 # Mihomo-Script
-适用于Mihomo/Clash内核的复写脚本
+适用于Mihomo/Clash内核的覆写脚本/Override Script
 
 ## 警告及免责声明
 
@@ -23,7 +23,7 @@ Elite至尊版脚本支持**根据地区进行代理**的方案，舍弃了冗�
 
 ## 📲 适用软件
 
-适用包括但不限于 Bettbox, FlClash, ClashMi, Clash Meta, Clash Verge, Open Clash 等使用Mihomo/Clash/Clash Meta或相关/相似内核的软件，Android, iOS, Harmony, Windows ,MacOS, Linux, OpenWRT, iStore 等各种平台运行之软件/插件均适用。
+适用包括但不限于 Bettbox, FlClash, ClashMi, Clash Meta, Clash Verge, Open Clash 等使用Mihomo/Clash/Clash Meta或相关/相似内核的软件，Android, iOS, Harmony, Windows, MacOS, Linux, OpenWRT, iStore 等各种平台运行之软件/插件均适用。
 
 ## ✨ 核心特性
 
