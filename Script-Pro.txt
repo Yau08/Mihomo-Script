@@ -9,7 +9,7 @@ function main(params) {
   // 1. 安全获取节点列表
   const rawProxies = Array.isArray(params.proxies) ? params.proxies : [];
   rawProxies.unshift({
-    name: "DIRECT-Node",
+    name: "Script Pro",
     type: "direct",
     udp: true
   });
