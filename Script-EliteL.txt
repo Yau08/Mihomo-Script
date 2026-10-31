@@ -16,6 +16,12 @@ function main(params) {
   });
 
   const proxyNames = rawProxies.map(p => p.name).filter(Boolean);
+  const proxyNames = rawProxyNames.map(name => {
+    if (/台湾|TW|tw|Taiwan|ROC|台灣|臺灣|湾|灣|中华|中華|民国|民國|中华民国|中華民國|🇨🇳/i.test(name)) {
+      return name.replace(/🇨🇳/g, "🇹🇼");
+    }
+    return name;
+  });
   
   // 排除直连节点后的纯代理节点列表（专门给自动化组使用）
   const nodeNames = proxyNames.filter(name => name !== "Script Elite");
