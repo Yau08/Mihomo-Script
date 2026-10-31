@@ -34,7 +34,16 @@ Elite至尊版脚本支持根据地区进行代理的方案。
 
 ## 如何使用?
 [复制下列链接，在软件中选择从URL导入即可]
-(https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script.txt)
+标准版：https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script.txt
+
+专业版：
+https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script-Pro.txt
+
+极致版：
+https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script-Ultra.txt
+
+至尊版：（⭐️⭐️⭐️⭐️⭐️最推荐）
+https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script-Elite.txt
 
 ## 📄 开源许可
 
