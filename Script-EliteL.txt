@@ -1,6 +1,6 @@
 /*
 Repository Link: https://github.com/Yau08/Mihomo-Script
-Subscription Link: https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script-Elite.txt
+Subscription Link: https://raw.githubusercontent.com/Yau08/Mihomo-Script/refs/heads/main/Script-EliteL.txt
 Open Source Protocol: AGPL v3.0
 */
 function main(params) {
