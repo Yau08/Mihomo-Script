@@ -297,7 +297,7 @@ function main(params) {
     // 国内 IP 直连
     "GEOIP,CN,DIRECT",
     "GEOSITE,CN,DIRECT",
-    `DOMAIN-SUFFIX,*.cn,${mainGroup}`,
+    `DOMAIN-SUFFIX,cn,${mainGroup}`,
     "DOMAIN-KEYWORD,com.cn,DIRECT",
     "DOMAIN-SUFFIX,qq.com,DIRECT",
     "DOMAIN-KEYWORD,tencent,DIRECT",
