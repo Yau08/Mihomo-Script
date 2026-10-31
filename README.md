@@ -1,5 +1,5 @@
 # Mihomo-Script
-适用于Mihomo/Clash内核的覆写脚本/Override Script
+适用于Mihomo/Clash内核的覆写脚本
 
 ## 警告及免责声明
 
