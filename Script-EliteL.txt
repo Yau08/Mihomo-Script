@@ -5,33 +5,27 @@ Open Source Protocol: AGPL v3.0
 */
 function main(params) {
   if (!params) return {};
-
   // 1. 安全获取节点列表，并在最前面注入一个真正的直连节点对象
   const rawProxies = Array.isArray(params.proxies) ? params.proxies : [];
-  
+  rawProxies.forEach(p => {
+    if (p && p.name) {
+      if (/台湾|TW|tw|Taiwan|ROC|台灣|臺灣|湾|灣|中华|中華|民国|民國|中华民国|中華民國|🇨🇳/i.test(p.name)) {
+        p.name = p.name.replace(/🇨🇳/g, "🇹🇼");
+      }
+    }
+  });
   rawProxies.unshift({
     name: "Script Elite",
     type: "direct",
     udp: true
   });
-
   const proxyNames = rawProxies.map(p => p.name).filter(Boolean);
-  const proxyNames = rawProxyNames.map(name => {
-    if (/台湾|TW|tw|Taiwan|ROC|台灣|臺灣|湾|灣|中华|中華|民国|民國|中华民国|中華民國|🇨🇳/i.test(name)) {
-      return name.replace(/🇨🇳/g, "🇹🇼");
-    }
-    return name;
-  });
-  
   // 排除直连节点后的纯代理节点列表（专门给自动化组使用）
   const nodeNames = proxyNames.filter(name => name !== "Script Elite");
-
-  // ==================== 地区筛选逻辑 ====================
+  // ---------- 地区筛选逻辑 ----------
   const getProxiesByKeyword = (keywordRegex) => {
     return nodeNames.filter(name => keywordRegex.test(name));
   };
-
-  // 各地区节点名称列表（按 TW, HK, JP, KR, SG 顺序）
   const allNodes = nodeNames;
   const twNodes = getProxiesByKeyword(/台湾|TW|tw|Taiwan|ROC|台灣|臺灣|湾|灣|中华|中華|民国|民國|中华民国|中華民國|🇹🇼/i);
   const hkNodes = getProxiesByKeyword(/香港|HK|hk|Hong Kong|Hong|HONG|港|🇭🇰/i);
@@ -39,11 +33,9 @@ function main(params) {
   const krNodes = getProxiesByKeyword(/韩国|KR|Korea|韩|韓|🇰🇷/i);
   const sgNodes = getProxiesByKeyword(/新加坡|SG|Singapore|新|坡|狮|獅|🇸🇬/i);
   const usNodes = getProxiesByKeyword(/美国|US|USA|United States|United|UNITED|States|America|美|米|🇺🇸/i);
-  // ====================================================
-
+  // --------------------
   // 2. 自定义主策略组名称
   let mainGroup = "SELECT";
-
   // 3. 构造配置对象
   const config = {
     ...params,
@@ -74,29 +66,14 @@ function main(params) {
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       },
-      {
-        name: "FALLBACK",
-        type: "fallback",
-        proxies: nodeNames,
-        url: "http://www.gstatic.com/generate_204",
-        interval: 300
-      },
-      {
-        name: "BALANCE",
-        type: "load-balance",
-        strategy: "consistent-hashing",
-        proxies: nodeNames,
-        url: "http://www.gstatic.com/generate_204",
-        interval: 300
-      },
         {
         name: "ALL",
         type: "select",
         proxies: nodeNames,
       },
-      // ==================== 动态生成各地区策略组（负载均衡） ====================
+      // ========== 动态生成各地区策略组（负载均衡） ==========
       {
-        name: "TW",
+        name: "🇹🇼 ROC",
         type: "load-balance",
         strategy: "consistent-hashing",
         proxies: twNodes.length > 0 ? twNodes : ["Script Elite"],
@@ -104,7 +81,7 @@ function main(params) {
         interval: 300
       },
       {
-        name: "HK",
+        name: "🇭🇰 HKG",
         type: "load-balance",
         strategy: "consistent-hashing",
         proxies: hkNodes.length > 0 ? hkNodes : ["Script Elite"],
@@ -112,7 +89,7 @@ function main(params) {
         interval: 300
       },
       {
-        name: "JP",
+        name: "🇯🇵 JPN",
         type: "load-balance",
         strategy: "consistent-hashing",
         proxies: jpNodes.length > 0 ? jpNodes : ["Script Elite"],
@@ -120,7 +97,7 @@ function main(params) {
         interval: 300
       },
       {
-        name: "KR",
+        name: "🇰🇷 KOR",
         type: "load-balance",
         strategy: "consistent-hashing",
         proxies: krNodes.length > 0 ? krNodes : ["Script Elite"],
@@ -128,7 +105,7 @@ function main(params) {
         interval: 300
       },
       {
-        name: "SG",
+        name: "🇸🇬 SGP",
         type: "load-balance",
         strategy: "consistent-hashing",
         proxies: sgNodes.length > 0 ? sgNodes : ["Script Elite"],
@@ -136,18 +113,17 @@ function main(params) {
         interval: 300
       },
       {
-        name: "US",
+        name: "🇺🇸 USA",
         type: "load-balance",
         strategy: "consistent-hashing",
         proxies: usNodes.length > 0 ? usNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       }
-      // ====================================================================================
+      // ====================
     ]
   };
-
-  // 4. 覆盖为你要求的 Fake-IP DNS（优化整合版）
+  // 4. 覆盖Fake-IP DNS（优化整合版）
   config.dns = {
     enable: true,
     listen: "0.0.0.0:10053",
@@ -189,8 +165,7 @@ function main(params) {
       domain: ["+.google.com", "+.facebook.com", "+.youtube.com"]
     }
   };
-
-  // 5. 规则配置
+// 5. 规则配置
   config.rules = [
     "IP-CIDR,0.0.0.0/8,DIRECT,no-resolve",
     "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve",
@@ -203,7 +178,7 @@ function main(params) {
     "IP-CIDR,224.0.0.0/4,DIRECT,no-resolve",
     "IP-CIDR,240.0.0.0/4,DIRECT,no-resolve",
     "DST-PORT,123,DIRECT",
-    
+
     // 局域网、路由器、办公、NTP、连通性等直连规则
     "DOMAIN-SUFFIX,lan,DIRECT",
     "DOMAIN-SUFFIX,local,DIRECT",
