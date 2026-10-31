@@ -18,7 +18,7 @@ function main(params) {
   const proxyNames = rawProxies.map(p => p.name).filter(Boolean);
   
   // 排除直连节点后的纯代理节点列表（专门给自动化组使用，避免直连测速外网链接超时）
-  const nodeNames = proxyNames.filter(name => name !== "DIRECT");
+  const nodeNames = proxyNames.filter(name => name !== "Script Ultra");
 
   // 2. 自定义主策略组名称
   let mainGroup = "SELECT";
