@@ -26,7 +26,7 @@ function main(params) {
   };
 
   // 各地区节点名称列表（按 TW, HK, JP, KR, SG 顺序）
-  const AllNodes = nodeNames;
+  const allNodes = nodeNames;
   const twNodes = getProxiesByKeyword(/台湾|TW|tw|Taiwan|ROC|台灣|臺灣|湾|灣|中华|中華|民国|民國|中华民国|中華民國|🇹🇼/i);
   const hkNodes = getProxiesByKeyword(/香港|HK|hk|Hong Kong|Hong|HONG|港|🇭🇰/i);
   const jpNodes = getProxiesByKeyword(/日本|JP|Japan|日|🇯🇵/i);
@@ -51,14 +51,14 @@ function main(params) {
           "FALLBACK", 
           "BALANCE", 
           "Script Elite",
-          AllNodes.length > 0 ? "ALL" : null,
+          allNodes.length > 0 ? "ALL" : null,
           // 排列：TW -> HK -> JP -> KR -> SG -> US
           twNodes.length > 0 ? "TW" : null,
           hkNodes.length > 0 ? "HK" : null,
           jpNodes.length > 0 ? "JP" : null,
           krNodes.length > 0 ? "KR" : null,
           sgNodes.length > 0 ? "SG" : null,
-          sgNodes.length > 0 ? "US" : null,
+          usNodes.length > 0 ? "US" : null,
         ].filter(Boolean)
       },
       {
@@ -127,7 +127,7 @@ function main(params) {
       {
         name: "US",
         type: "url-test",
-        proxies: sgNodes.length > 0 ? sgNodes : ["Script Elite"],
+        proxies: usNodes.length > 0 ? usNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       }
