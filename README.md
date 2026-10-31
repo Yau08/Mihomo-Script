@@ -21,6 +21,10 @@ Elite至尊版脚本支持**根据地区进行代理**的方案，舍弃了冗�
 
 ---
 
+## 📲 适用软件
+
+适用包括但不限于 Bettbox, FlClash, ClashMi, Clash Meta, Clash Verge, Open Clash 等使用Mihomo/Clash/Clash Meta或相关/相似内核的软件，Android, iOS, Harmony, Windows ,MacOS, Linux, OpenWRT, iStore 等各种平台运行之软件/插件均适用。
+
 ## ✨ 核心特性
 
 1. **🤖 智能策略组适配**：自动识别机场订阅中的主要代理策略组（如 `Proxy`、`节点选择`、`自动选择` 等），无需手动更改策略组名称。
