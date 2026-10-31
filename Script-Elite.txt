@@ -26,11 +26,13 @@ function main(params) {
   };
 
   // 各地区节点名称列表（按 TW, HK, JP, KR, SG 顺序）
-  const twNodes = getProxiesByKeyword(/台湾|TW|Taiwan|ROC|台灣|臺灣|湾|灣|中华|中華|民国|民國|中华民国|中華民國|🇹🇼/i);
-  const hkNodes = getProxiesByKeyword(/香港|HK|Hong Kong|Hong|HONG|港|🇭🇰/i);
-  const jpNodes = getProxiesByKeyword(/日本|JP|Japan|日|🇯🇵|/i);
+  const AllNodes = nodeNames;
+  const twNodes = getProxiesByKeyword(/台湾|TW|tw|Taiwan|ROC|台灣|臺灣|湾|灣|中华|中華|民国|民國|中华民国|中華民國|🇹🇼/i);
+  const hkNodes = getProxiesByKeyword(/香港|HK|hk|Hong Kong|Hong|HONG|港|🇭🇰/i);
+  const jpNodes = getProxiesByKeyword(/日本|JP|Japan|日|🇯🇵/i);
   const krNodes = getProxiesByKeyword(/韩国|KR|Korea|韩|韓|🇰🇷/i);
   const sgNodes = getProxiesByKeyword(/新加坡|SG|Singapore|新|坡|狮|獅|🇸🇬/i);
+  const usNodes = getProxiesByKeyword(/美国|US|USA|United States|United|UNITED||America|美|米|🇺🇸/i);
   // ====================================================
 
   // 2. 自定义主策略组名称
@@ -48,13 +50,15 @@ function main(params) {
           "AUTO", 
           "FALLBACK", 
           "BALANCE", 
-          // 排列：TW -> HK -> JP -> KR -> SG
+          "Script Elite"
+          AllNodes.length > 0 ? "ALL" : null,
+          // 排列：TW -> HK -> JP -> KR -> SG -> US
           twNodes.length > 0 ? "TW" : null,
           hkNodes.length > 0 ? "HK" : null,
           jpNodes.length > 0 ? "JP" : null,
           krNodes.length > 0 ? "KR" : null,
           sgNodes.length > 0 ? "SG" : null,
-          "Script Elite" // 直连放在最后
+          sgNodes.length > 0 ? "US" : null,
         ].filter(Boolean)
       },
       {
@@ -79,39 +83,39 @@ function main(params) {
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       },
-      // ==================== 动态生成各地区策略组（按 TW, HK, JP, KR, SG 排序） ====================
+      // ==================== 动态生成各地区策略组（按 TW, HK, JP, KR, SG , US排序） ====================
       {
         name: "TW",
         type: "url-test",
-        proxies: twNodes.length > 0 ? twNodes : ["Script Ultra"],
+        proxies: twNodes.length > 0 ? twNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       },
       {
         name: "HK",
         type: "url-test",
-        proxies: hkNodes.length > 0 ? hkNodes : ["Script Ultra"],
+        proxies: hkNodes.length > 0 ? hkNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       },
       {
         name: "JP",
         type: "url-test",
-        proxies: jpNodes.length > 0 ? jpNodes : ["Script Ultra"],
+        proxies: jpNodes.length > 0 ? jpNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       },
       {
         name: "KR",
         type: "url-test",
-        proxies: krNodes.length > 0 ? krNodes : ["Script Ultra"],
+        proxies: krNodes.length > 0 ? krNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       },
       {
         name: "SG",
         type: "url-test",
-        proxies: sgNodes.length > 0 ? sgNodes : ["Script Ultra"],
+        proxies: sgNodes.length > 0 ? sgNodes : ["Script Elite"],
         url: "http://www.gstatic.com/generate_204",
         interval: 300
       }
