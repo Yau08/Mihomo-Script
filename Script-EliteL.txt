@@ -15,13 +15,13 @@ function main(params) {
     }
   });
   rawProxies.unshift({
-    name: "Script Elite",
+    name: "🏴‍☠️ Script Elite",
     type: "direct",
     udp: true
   });
   const proxyNames = rawProxies.map(p => p.name).filter(Boolean);
   // 排除直连节点后的纯代理节点列表（专门给自动化组使用）
-  const nodeNames = proxyNames.filter(name => name !== "Script Elite");
+  const nodeNames = proxyNames.filter(name => name !== "🏴‍☠️ Script Elite");
   // ---------- 地区筛选逻辑 ----------
   const getProxiesByKeyword = (keywordRegex) => {
     return nodeNames.filter(name => keywordRegex.test(name));
@@ -45,9 +45,9 @@ function main(params) {
         name: "SELECT",
         type: "select",
         proxies: [
-          "AUTO",
+          //"AUTO",
+          "🏴‍☠️ Script Elite",
           allNodes.length > 0 ? "🇺🇳 ALL" : null,
-          "Script Elite",
           // 排列：TW -> HK -> JP -> KR -> SG -> US
           twNodes.length > 0 ? "🇹🇼 ROC" : null,
           hkNodes.length > 0 ? "🇭🇰 HKG" : null,
@@ -57,13 +57,13 @@ function main(params) {
           usNodes.length > 0 ? "🇺🇸 USA" : null,
         ].filter(Boolean)
       },
-      {
+/*      {
         name: "AUTO",
         type: "url-test",
         proxies: nodeNames,
         url: "http://www.gstatic.com/generate_204",
         interval: 300
-      },
+      },*/
         {
         name: "🇺🇳 ALL",
         type: "select",
