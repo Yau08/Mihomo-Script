@@ -8,7 +8,13 @@ function main(params) {
 
   // 1. 安全获取节点列表
   const rawProxies = Array.isArray(params.proxies) ? params.proxies : [];
+  rawProxies.unshift({
+    name: "DIRECT",
+    type: "direct",
+    udp: true
+  });
   const proxyNames = rawProxies.map(p => p.name).filter(Boolean);
+   const nodeNames = proxyNames.filter(name => name !== "DIRECT");
 
   // 2. 自定义策略组名称
   let mainGroup = "SELECT";
