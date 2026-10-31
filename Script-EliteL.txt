@@ -45,16 +45,16 @@ function main(params) {
         name: "SELECT",
         type: "select",
         proxies: [
-          "AUTO SELECT", 
+          "AUTO", 
           "Script Elite",
           allNodes.length > 0 ? "ALL" : null,
           // 排列：TW -> HK -> JP -> KR -> SG -> US
-          twNodes.length > 0 ? "TW" : null,
-          hkNodes.length > 0 ? "HK" : null,
-          jpNodes.length > 0 ? "JP" : null,
-          krNodes.length > 0 ? "KR" : null,
-          sgNodes.length > 0 ? "SG" : null,
-          usNodes.length > 0 ? "US" : null,
+          twNodes.length > 0 ? "🇹🇼 ROC" : null,
+          hkNodes.length > 0 ? "🇭🇰 HKG" : null,
+          jpNodes.length > 0 ? "🇯🇵 JPN" : null,
+          krNodes.length > 0 ? "🇰🇷 KOR" : null,
+          sgNodes.length > 0 ? "🇸🇬 SGP" : null,
+          usNodes.length > 0 ? "🇺🇸 USA" : null,
         ].filter(Boolean)
       },
       {
