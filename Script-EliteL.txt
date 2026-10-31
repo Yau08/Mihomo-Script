@@ -45,9 +45,7 @@ function main(params) {
         name: "SELECT",
         type: "select",
         proxies: [
-          "AUTO", 
-          "FALLBACK", 
-          "BALANCE", 
+          "AUTO SELECT", 
           "Script Elite",
           allNodes.length > 0 ? "ALL" : null,
           // 排列：TW -> HK -> JP -> KR -> SG -> US
