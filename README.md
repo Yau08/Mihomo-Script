@@ -32,6 +32,10 @@ Elite至尊版脚本支持**根据地区进行代理**的方案。
    - **国外常用服务覆盖**：针对 Google、YouTube、Telegram、GitHub、Steam、OpenAI/ChatGPT、X (Twitter)、Microsoft 等服务精准走代理。
    - **安全兜底**：未命中的流量统一兜底至识别出的主代理策略组。
 
+## 机场合作/广告投放
+
+请联系 t.me/@A89899999
+
 ## 如何使用?
 复制下列链接，在软件中选择从URL导入即可
 
