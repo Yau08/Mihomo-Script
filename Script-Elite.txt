@@ -32,7 +32,7 @@ function main(params) {
   const jpNodes = getProxiesByKeyword(/日本|JP|Japan|日|🇯🇵/i);
   const krNodes = getProxiesByKeyword(/韩国|KR|Korea|韩|韓|🇰🇷/i);
   const sgNodes = getProxiesByKeyword(/新加坡|SG|Singapore|新|坡|狮|獅|🇸🇬/i);
-  const usNodes = getProxiesByKeyword(/美国|US|USA|United States|United|UNITED||America|美|米|🇺🇸/i);
+  const usNodes = getProxiesByKeyword(/美国|US|USA|United States|United|UNITED|States|America|美|米|🇺🇸/i);
   // ====================================================
 
   // 2. 自定义主策略组名称
