@@ -46,9 +46,8 @@ function main(params) {
         type: "select",
         proxies: [
           //"AUTO",
-          "🏴‍☠️ Script Elite",
           allNodes.length > 0 ? "🇺🇳 ALL" : null,
-          // 排列：TW -> HK -> JP -> KR -> SG -> US
+          "🏴‍☠️ Script Elite",
           twNodes.length > 0 ? "🇹🇼 ROC" : null,
           hkNodes.length > 0 ? "🇭🇰 HKG" : null,
           jpNodes.length > 0 ? "🇯🇵 JPN" : null,
