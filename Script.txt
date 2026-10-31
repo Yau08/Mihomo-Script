@@ -229,8 +229,6 @@ function main(params) {
     "DOMAIN-SUFFIX,pvp.net,DIRECT",
     "DOMAIN-SUFFIX,moba.qq.com,DIRECT",
     "DOMAIN-KEYWORD,stun,DIRECT",
-    "DOMAIN-KEYWORD,stun,DIRECT",
-    "DOMAIN-KEYWORD,stun,DIRECT",
 
     // 7. NAS 远程访问
     "DOMAIN-SUFFIX,synology.com,DIRECT",
@@ -263,6 +261,7 @@ function main(params) {
     // Google 国内代理
     `DOMAIN-SUFFIX,g.cn,${mainGroup}`,
     `DOMAIN-SUFFIX,google.cn,${mainGroup}`,
+    `DOMAIN-KEYWORD,google,${mainGroup}`,
 
     // Google Play & 国外服务代理    
     `DOMAIN-SUFFIX,google.com,${mainGroup}`,
